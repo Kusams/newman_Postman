@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "newman run  petStoreCollection.postman_collection.json -e petEnvironment.postman_environment.json -r cli,htmlextra --reporter-htmlextra-title '86400 Assessment' --reporter-htmlextra-export 'test-results/results.html'"
+    "test": "newman run  $file_collection -e $file_env -r cli,htmlextra --reporter-htmlextra-title '86400 Assessment' --reporter-htmlextra-export 'test-results/results.html'"
   },
   "repository": {
     "type": "git",

@@ -13,7 +13,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"find the pet Id: \" + pm.info.requestName, function () {",
+							"pm.test(\"find the pet Id from the available list: \" + pm.info.requestName, function () {",
 							"    pm.response.to.have.status(200);",
 							"    var jsonBody = pm.response.json();",
 							"    for (var i in jsonBody) {",
@@ -128,7 +128,7 @@
 			"response": []
 		},
 		{
-			"name": "getPedName_afterRenameing",
+			"name": "getPedName_afterRenaming",
 			"event": [
 				{
 					"listen": "test",
