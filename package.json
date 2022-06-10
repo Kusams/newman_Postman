@@ -1,0 +1,19 @@
+{
+  "name": "newman_postman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "newman run  petStoreCollection.postman_collection.json -e petEnvironment.postman_environment.json -r cli,htmlextra --reporter-htmlextra-title '86400 Assessment' --reporter-htmlextra-export 'test-results/results.html'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kusams/newman_Postman.git"
+  },
+  "devDependencies": {
+    "newman": "^4.5.5"
+  },
+  "dependencies": {
+    "newman-reporter-htmlextra": "^1.8.9"
+  }
+}
