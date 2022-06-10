@@ -16,20 +16,18 @@
 							"pm.test(\"find the pet Id: \" + pm.info.requestName, function () {",
 							"    pm.response.to.have.status(200);",
 							"    var jsonBody = pm.response.json();",
-							"",
-							"    for (var i in pm.response.json()) {",
-							"        if(jsonBody[i].name =='fish'){",
-							"            console.log('row is '+i);",
+							"    for (var i in jsonBody) {",
+							"        if(jsonBody[i].name !==\"fish\"){",
+							"            console.log('values is '+i);",
 							"           pm.environment.set(\"petNameBeforeUpdate\", jsonBody[i].name);",
-							"            pm.environment.set(\"petId\", jsonBody[i].id);",
-							"console.log('petId is '+jsonBody[i].id)",
-							"console.log('pet name is '+jsonBody[i].name)",
-											"break",
+							"           pm.environment.set(\"petId\", jsonBody[i].id); ",
+							"           console.log('petId is '+jsonBody[i].id);",
+							"           console.log('pet name is '+jsonBody[i].name);",
+							"            break;",
 							"        }",
-							"    } ",
+							"    }  ",
 							"});",
-							"setTimeout(function(){}, 10000);",
-							""
+							"setTimeout(function(){}, 5000);"
 						],
 						"type": "text/javascript"
 					}
@@ -45,56 +43,6 @@
 					{
 						"key": "accept",
 						"value": "*/*"
-					},
-					{
-						"key": "accept-language",
-						"value": "en-GB,en-US;q=0.9,en;q=0.8",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua",
-						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"102\", \"Google Chrome\";v=\"102\"",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-mobile",
-						"value": "?0",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-platform",
-						"value": "\"macOS\"",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-dest",
-						"value": "document",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-mode",
-						"value": "navigate",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-site",
-						"value": "none",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-user",
-						"value": "?1",
-						"disabled": true
-					},
-					{
-						"key": "upgrade-insecure-requests",
-						"value": "1",
-						"disabled": true
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
-						"disabled": true
 					}
 				],
 				"url": {
@@ -121,104 +69,6 @@
 			"response": []
 		},
 		{
-			"name": "getPedId",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"find the pet Id: \" + pm.info.requestName, function () {",
-							"    pm.response.to.have.status(200);",
-							"    var jsonBody = pm.response.json();",
-							"    pm.environment.set(\"petId\", jsonBody[0].id);",
-							"    pm.environment.set(\"petNameBeforeUpdate\", jsonBody[0].name);",
-							"});",
-							"setTimeout(function(){}, 3000);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "authority",
-						"value": "petstore.swagger.io"
-					},
-					{
-						"key": "accept",
-						"value": "*/*"
-					},
-					{
-						"key": "accept-language",
-						"value": "en-GB,en-US;q=0.9,en;q=0.8",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua",
-						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"102\", \"Google Chrome\";v=\"102\"",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-mobile",
-						"value": "?0",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-platform",
-						"value": "\"macOS\"",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-dest",
-						"value": "document",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-mode",
-						"value": "navigate",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-site",
-						"value": "none",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-user",
-						"value": "?1",
-						"disabled": true
-					},
-					{
-						"key": "upgrade-insecure-requests",
-						"value": "1",
-						"disabled": true
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
-						"disabled": true
-					}
-				],
-				"url": {
-					"raw": "https://petstore.swagger.io/v2/pet/{{petId}}",
-					"protocol": "https",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
-					],
-					"path": [
-						"v2",
-						"pet",
-						"{{petId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "updatePetName",
 			"event": [
 				{
@@ -232,7 +82,8 @@
 							"        pm.environment.set(\"petNameAfterUpdate\", jsonBody.name);",
 							"    }",
 							"    ",
-							"});"
+							"});",
+							"setTimeout(function(){}, 3000);"
 						],
 						"type": "text/javascript"
 					}
@@ -248,56 +99,6 @@
 					{
 						"key": "accept",
 						"value": "*/*"
-					},
-					{
-						"key": "accept-language",
-						"value": "en-GB,en-US;q=0.9,en;q=0.8",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua",
-						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"102\", \"Google Chrome\";v=\"102\"",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-mobile",
-						"value": "?0",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-platform",
-						"value": "\"macOS\"",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-dest",
-						"value": "document",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-mode",
-						"value": "navigate",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-site",
-						"value": "none",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-user",
-						"value": "?1",
-						"disabled": true
-					},
-					{
-						"key": "upgrade-insecure-requests",
-						"value": "1",
-						"disabled": true
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
-						"disabled": true
 					}
 				],
 				"body": {
@@ -336,9 +137,9 @@
 							"pm.test(\"find and verify the the pet name after update: \" + pm.info.requestName, function () {",
 							"    pm.response.to.have.status(200);",
 							"    var jsonBody = pm.response.json();",
-							"    pm.expect(pm.variables.get(\"petNameAfterUpdate\")).to.not.eql(pm.variables.get(\"petNameBeforeUpdate\"));",
-							"",
-							"});"
+							"    pm.expect(jsonBody.name).to.not.eql(pm.variables.get(\"petNameBeforeUpdate\"));",
+							"});",
+							"setTimeout(function(){}, 3000);"
 						],
 						"type": "text/javascript"
 					}
@@ -354,56 +155,6 @@
 					{
 						"key": "accept",
 						"value": "*/*"
-					},
-					{
-						"key": "accept-language",
-						"value": "en-GB,en-US;q=0.9,en;q=0.8",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua",
-						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"102\", \"Google Chrome\";v=\"102\"",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-mobile",
-						"value": "?0",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-platform",
-						"value": "\"macOS\"",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-dest",
-						"value": "document",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-mode",
-						"value": "navigate",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-site",
-						"value": "none",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-user",
-						"value": "?1",
-						"disabled": true
-					},
-					{
-						"key": "upgrade-insecure-requests",
-						"value": "1",
-						"disabled": true
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
-						"disabled": true
 					}
 				],
 				"url": {
@@ -433,88 +184,27 @@
 							"pm.test(\"verify pet with id was deleted from the list: \" + pm.info.requestName, function () {",
 							"    pm.response.to.have.status(200);",
 							"    var jsonBody = pm.response.json();",
-							"    pm.expect(pm.variables.get(\"petNameAfterUpdate\")).to.not.eql(pm.variables.get(\"petNameBeforeUpdate\"));",
-							"",
-							"});"
+							"    pm.expect(jsonBody.code).to.eql(200);",
+							"    pm.expect(jsonBody.type).to.eql(\"unknown\");",
+							"    pm.expect(parseInt(jsonBody.message)).to.eql(pm.variables.get(\"petId\"));",
+							"});",
+							"setTimeout(function(){}, 3000);"
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
 			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "12345",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "special-key",
-							"type": "string"
-						}
-					]
-				},
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "authority",
-						"value": "petstore.swagger.io"
+						"value": "petstore.swagger.io",
+						"disabled": true
 					},
 					{
 						"key": "accept",
-						"value": "*/*"
-					},
-					{
-						"key": "accept-language",
-						"value": "en-GB,en-US;q=0.9,en;q=0.8",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua",
-						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"102\", \"Google Chrome\";v=\"102\"",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-mobile",
-						"value": "?0",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-platform",
-						"value": "\"macOS\"",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-dest",
-						"value": "document",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-mode",
-						"value": "navigate",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-site",
-						"value": "none",
-						"disabled": true
-					},
-					{
-						"key": "sec-fetch-user",
-						"value": "?1",
-						"disabled": true
-					},
-					{
-						"key": "upgrade-insecure-requests",
-						"value": "1",
-						"disabled": true
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
+						"value": "*/*",
 						"disabled": true
 					},
 					{
@@ -536,13 +226,55 @@
 						"v2",
 						"pet",
 						"{{petId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPedId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"find the pet Id: \" + pm.info.requestName, function () {",
+							"    pm.response.to.have.status(404);",
+							"    var jsonBody = pm.response.json();",
+							"    pm.expect(jsonBody.code).to.eql(1);",
+							"    pm.expect(jsonBody.type).to.eql(\"error\");",
+							"    pm.expect(jsonBody.message).to.eql(\"Pet not found\");",
+							"});",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "petstore.swagger.io"
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/{{petId}}",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
 					],
-					"query": [
-						{
-							"key": "api_key",
-							"value": "special-key",
-							"disabled": true
-						}
+					"path": [
+						"v2",
+						"pet",
+						"{{petId}}"
 					]
 				}
 			},
