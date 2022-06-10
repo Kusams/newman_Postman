@@ -22,4 +22,5 @@ echo "generated the environment file ${file_env}"
 
 #####################################################################
 echo -e "\n\n- 2. Execution in progress \n"
-file_collection=${file_collection} file_env=${file_env} npm run test
+rm -rf ${SCRIPTPATH}/node_modules
+npm i && file_collection=${file_collection} file_env=${file_env} npm run test

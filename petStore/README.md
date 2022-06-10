@@ -10,5 +10,5 @@ This is 86400 API assessment project.In this we can validate the post,get,put an
 ## Getting Started
 
 1. Clone repo `git clone https://github.com/Kusams/newman_Postman.git`
-2. Run `npm install`
-3. Run `npm run test`
+2. launch the terminal and run the command : `cd petStore/`
+3. next run `  ./TestRunner.sh `
