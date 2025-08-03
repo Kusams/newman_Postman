@@ -1,6 +1,6 @@
-# 86400_API_Assessment
+# postman_API_Assessment
 
-This is 86400 API assessment project.In this we can validate the post,get,put and delete calls working as expected.
+This is postman API assessment project.In this we can validate the post,get,put and delete calls working as expected.
 ## Pre Requisites
 
 1. npm
