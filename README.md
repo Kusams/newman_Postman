@@ -4,7 +4,7 @@ This is postman API assessment project.In this we can validate the post,get,put 
 ## Pre Requisites
 
 1. npm
-2. Node v10+
+2. Node v16+
 
 
 ## Getting Started
